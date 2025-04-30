@@ -11,16 +11,33 @@ namespace MonotonicStack
     class MonotonicStack<T> : IEnumerable<T> where T : IComparable<T> 
     {
         private Stack<T> _stack;
+        /// <summary>
+        /// Indicates whether the stack maintains a monotonic increasing or decreasing order.
+        /// If set to true, the stack enforces a decreasing order (greater elements on top).
+        /// If set to false, the stack enforces an increasing order (smaller elements on top).
+        /// </summary>
         private bool greater = false;
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="greater">If the monotonic stack must be greater or not. By default flase.</param>
+        /// <param name="greater">
+        /// Indicates whether the stack maintains a monotonic increasing or decreasing order.
+        /// If set to true, the stack enforces a decreasing order (greater elements on top).
+        /// If set to false, the stack enforces an increasing order (smaller elements on top).
+        /// </param>
         public MonotonicStack([Optional]bool greater)
         {
             _stack = new();
             this.greater = greater;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="greater">
+        /// Indicates whether the stack maintains a monotonic increasing or decreasing order.
+        /// If set to true, the stack enforces a decreasing order (greater elements on top).
+        /// If set to false, the stack enforces an increasing order (smaller elements on top).
+        /// </param>
         public MonotonicStack(IEnumerable<T> enumerator, [Optional]bool greater) : this(greater)
         {
             foreach(var item in enumerator)
